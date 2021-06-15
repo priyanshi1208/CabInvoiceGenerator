@@ -1,3 +1,7 @@
+com/magic/invoicegenerator/entity/RideDetails.java
+ com.magic.invoicegenerator.entity.RideDetails
+com/magic/invoicegenerator/entity/Invoice.java
+ com.magic.invoicegenerator.entity.Invoice
 com/magic/invoicegenerator/services/ICabInvoiceGenerator.java
  com.magic.invoicegenerator.services.ICabInvoiceGenerator
 com/magic/invoicegenerator/services/CabInvoiceGenerator.java
