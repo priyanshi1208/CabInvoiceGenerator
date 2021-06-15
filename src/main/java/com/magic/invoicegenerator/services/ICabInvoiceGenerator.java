@@ -6,5 +6,5 @@ import com.magic.invoicegenerator.entity.RideDetails;
 import java.util.List;
 
 public interface ICabInvoiceGenerator {
-     Invoice calculateMultipleRideFare(List<RideDetails> rideDetails);
+     Invoice calculateMultipleRideFareForParticularUser(List<RideDetails> rideDetails,int userId);
 }

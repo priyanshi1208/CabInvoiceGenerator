@@ -8,10 +8,10 @@ import java.util.List;
 public class CabInvoiceGenerator implements ICabInvoiceGenerator {
 
     @Override
-    public Invoice calculateMultipleRideFare(List<RideDetails> rideDetails) {
-        return new Invoice(rideDetails.size(),
-                rideDetails.stream().mapToInt(RideDetails::getRideFare).sum(),
-                rideDetails.stream().mapToInt(RideDetails::getRideFare).sum()/rideDetails.size());
+    public Invoice calculateMultipleRideFareForParticularUser(List<RideDetails> rideDetails,int userId) {
+        long totalFare=rideDetails.stream().filter(ride->ride.getUserId().equals(userId))
+                .mapToInt(RideDetails::getRideFare).sum();
+        long totalRides=rideDetails.stream().filter(ride->ride.getUserId().equals(userId)).count();
+        return new Invoice(totalRides, totalFare, totalFare/totalRides);
     }
-
 }

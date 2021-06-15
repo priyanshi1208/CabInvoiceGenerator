@@ -15,15 +15,15 @@ public class CabInvoiceGeneratorTest {
 
 
     @Test
-    void GivenTestMultipleDatesAndTime_CheckIfWithMultipleRideFare_InvoiceGeneratorReturnsInvoiceSummary() {
+    void GivenTestMultipleDatesAndTime_CheckForParticularUser_InvoiceGeneratorReturnsInvoiceForUser() {
         ICabInvoiceGenerator cabInvoiceGenerator=new CabInvoiceGenerator();
         List<RideDetails> rideDetails=new ArrayList<>();
-        rideDetails.add(new RideDetails(280,20));
-        rideDetails.add(new RideDetails(300,30));
-        rideDetails.add(new RideDetails(200,20));
-        Invoice invoice = cabInvoiceGenerator.calculateMultipleRideFare(rideDetails);
-        Assertions.assertEquals(7870,invoice.getTotalFare());
-        Assertions.assertEquals(3,invoice.getTotalRides());
-        Assertions.assertEquals(2623,invoice.getAverageFare());
+        rideDetails.add(new RideDetails(280,20,1));
+        rideDetails.add(new RideDetails(300,30,2));
+        rideDetails.add(new RideDetails(200,20,1));
+        Invoice invoice = cabInvoiceGenerator.calculateMultipleRideFareForParticularUser(rideDetails,1);
+        Assertions.assertEquals(4840,invoice.getTotalFare());
+        Assertions.assertEquals(2,invoice.getTotalRides());
+        Assertions.assertEquals(2420,invoice.getAverageFare());
     }
 }
