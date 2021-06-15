@@ -5,26 +5,24 @@ public class RideDetails {
     private int distancePerKm;
     private int timeInMinutes;
     private int userId;
+    private RideType.Ridetype rideType;
 
-    public RideDetails(int distancePerKm, int timeInMinutes,int userId) {
+    public RideDetails(int distancePerKm, int timeInMinutes, int userId, RideType.Ridetype rideType) {
         this.distancePerKm = distancePerKm;
         this.timeInMinutes = timeInMinutes;
-        this.userId=userId;
-        this.rideFare=TotalFare(distancePerKm,timeInMinutes);
+        this.userId = userId;
+        this.rideType = rideType;
+        this.rideFare = setRideFare(distancePerKm, timeInMinutes, rideType);
     }
-    private int TotalFare(int distanceInKm,int timeInMinutes){
-        int costPerKilometer = 10;
-        int costPerMinute = 1;
-        Integer totalFare = (distanceInKm * costPerKilometer) + timeInMinutes * costPerMinute;
-        return totalFare.compareTo(5) > 0 ? totalFare : 5;
+
+    private int setRideFare(int distanceInKm, int timeInMinutes, RideType.Ridetype rideType) {
+        RideType ride = new RideType(rideType);
+        Integer totalFare = (distanceInKm * ride.getCostPerKilometer()) + timeInMinutes * ride.getCostPerMinute();
+        return totalFare.compareTo(ride.getMinimumFare()) > 0 ? totalFare : ride.getMinimumFare();
     }
 
     public Integer getUserId() {
         return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public int getRideFare() {

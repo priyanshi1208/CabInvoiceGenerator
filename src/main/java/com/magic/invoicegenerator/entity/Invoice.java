@@ -15,23 +15,11 @@ public class Invoice {
         return totalRides;
     }
 
-    public void setTotalRides(long totalRides) {
-        this.totalRides = totalRides;
-    }
-
     public long getTotalFare() {
         return totalFare;
     }
 
-    public void setTotalFare(long totalFare) {
-        this.totalFare = totalFare;
-    }
-
     public long getAverageFare() {
         return averageFare;
-    }
-
-    public void setAverageFare(long averageFare) {
-        this.averageFare = averageFare;
     }
 }
